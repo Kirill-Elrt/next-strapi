@@ -12,6 +12,12 @@ services:
       DATABASE_NAME: strapi
       DATABASE_USERNAME: postgres
       DATABASE_PASSWORD: admin
+    volumes:
+      - ./strapi/config:/app/config
+      - ./strapi/src:/app/src
+      - ./strapi/yarn.lock:/app/yarn.lock
+      - ./strapi/.env:/app/env
+      - ./strapi/uploads:/app/uploads
     depends_on:
       - postgres
     networks:
@@ -29,8 +35,7 @@ services:
       - strapi
     volumes:
       - ./frontend/:/app
-      - /app/.next
-      - nodem:/app/node_modules
+      - ./frontend/.next:/app/.next
     restart: always
     networks:
       - my-network
