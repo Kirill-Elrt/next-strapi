@@ -29,8 +29,6 @@ services:
       dockerfile: Dockerfile.next
     ports:
       - "3000:3000"
-    environment:
-      API_TOKEN: ${API_TOKEN}
     depends_on:
       - strapi
     volumes:
