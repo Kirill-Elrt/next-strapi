@@ -2,7 +2,7 @@ module.exports = {
   routes: [
     {
       method: "GET",
-      path: "/doctors/:id/patients",
+      path: "/doctor/:id/patients",
       handler: "doctor.findPatientsOfDoctor",
     },
   ],
