@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patients",
+  "info": {
+    "singularName": "patient",
+    "pluralName": "patients",
+    "displayName": "Patient"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "patronymic": {
+      "type": "string"
+    },
+    "cabinet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cabinet.cabinet"
+    },
+    "date_birth": {
+      "type": "date"
+    },
+    "phoneNumber": {
+      "type": "text",
+      "required": true
+    },
+    "snils": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "gender": {
+      "type": "string",
+      "maxLength": 1,
+      "default": "m"
+    }
+  }
+}

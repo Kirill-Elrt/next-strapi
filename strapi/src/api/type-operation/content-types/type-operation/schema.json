@@ -1,0 +1,25 @@
+{
+  "kind": "collectionType",
+  "collectionName": "type_operations",
+  "info": {
+    "singularName": "type-operation",
+    "pluralName": "type-operations",
+    "displayName": "TypeOperation"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "type_1",
+        "type_2",
+        "type_3"
+      ],
+      "default": "type_1",
+      "required": true
+    }
+  }
+}

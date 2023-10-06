@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "operations",
+  "info": {
+    "singularName": "operation",
+    "pluralName": "operations",
+    "displayName": "Operation"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "patient": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient.patient"
+    },
+    "type_operation": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::type-operation.type-operation"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "ended",
+        "started",
+        "inprocess",
+        "notstart"
+      ],
+      "default": "notstart",
+      "required": true
+    }
+  }
+}
