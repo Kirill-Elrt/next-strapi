@@ -4,6 +4,7 @@ services:
     build:
       context: strapi/
       dockerfile: Dockerfile.strapi
+    restart: on-failure
     ports:
       - "1337:1337"
     environment:
@@ -55,4 +56,3 @@ networks:
 
 volumes:
   postgres-data:
-  nodem: {}
