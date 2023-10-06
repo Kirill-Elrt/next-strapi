@@ -14,7 +14,7 @@ module.exports = createCoreController("api::doctor.doctor", ({ strapi }) => ({
       where: {
         id: doctorId,
       },
-    });
+    }); //
     const PatientsOfDoctor = await strapi.db
       .query("api::patient.patient")
       .findMany({
@@ -28,9 +28,5 @@ module.exports = createCoreController("api::doctor.doctor", ({ strapi }) => ({
         },
       });
     return PatientsOfDoctor;
-    // const { results, pagination } = await strapi
-    //   .service("api::patient.patient")
-    //   .find(doctorId);
-    // return results;
   },
 }));
