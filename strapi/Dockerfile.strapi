@@ -1,20 +1,11 @@
-# Используем Node.js в качестве базового образа
 FROM node:18
 
-# Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем package.json и package-lock.json
 COPY package*.json ./
 
-# Устанавливаем зависимости
 RUN yarn install
 
-# Копируем файлы проекта
 COPY . .
 
-# Устанавливаем переменные окружения (если нужно)
-# ENV MY_ENV_VARIABLE=value
-
-# Запускаем Strapi
 CMD ["npm", "run", "develop"]
