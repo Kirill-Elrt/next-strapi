@@ -16,7 +16,7 @@ jobs:
 
     steps:
       - name: Checkout Code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: SSH into server and deploy
         uses: appleboy/ssh-action@master
@@ -25,4 +25,4 @@ jobs:
           username: root
           key: ${{secrets.DEPLOY_KEY}}
           script: |
-            ./update.sh
+            cd /DEV/next-strapi/ && git pull origin master && docker-compose up --build -d
