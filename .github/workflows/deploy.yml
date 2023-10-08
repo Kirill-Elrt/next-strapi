@@ -25,4 +25,4 @@ jobs:
           username: root
           key: ${{secrets.DEPLOY_KEY}}
           script: |
-            cd DEV/next-strapi && git pull origin master && docker-compose up --build -d
+            cd DEV/next-strapi && docker-compose down && git pull origin master && docker-compose up --build -d
