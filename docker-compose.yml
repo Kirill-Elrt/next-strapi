@@ -19,6 +19,7 @@ services:
       - ./strapi/yarn.lock:/app/yarn.lock
       - ./strapi/.env:/app/env
       - ./strapi/uploads:/app/uploads
+      - ./strapi/database:/app/database
     depends_on:
       - postgres
     networks:
