@@ -25,4 +25,4 @@ jobs:
           username: root
           key: ${{secrets.DEPLOY_KEY}}
           script: |
-            ../update.sh
+            ./update.sh
