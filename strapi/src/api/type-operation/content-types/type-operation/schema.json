@@ -4,7 +4,8 @@
   "info": {
     "singularName": "type-operation",
     "pluralName": "type-operations",
-    "displayName": "TypeOperation"
+    "displayName": "TypeOperation",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -12,13 +13,8 @@
   "pluginOptions": {},
   "attributes": {
     "type": {
-      "type": "enumeration",
-      "enum": [
-        "type_1",
-        "type_2",
-        "type_3"
-      ],
-      "default": "type_1",
+      "type": "string",
+      "unique": true,
       "required": true
     }
   }
