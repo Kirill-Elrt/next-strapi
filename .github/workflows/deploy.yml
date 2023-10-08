@@ -5,9 +5,14 @@ on:
     branches:
       - master
 
+
 jobs:
   deploy:
     runs-on: ubuntu-20.04
+
+    strategy:
+      matrix:
+        node-version: [16.x]
 
     steps:
       - name: Checkout Code
