@@ -1,10 +1,10 @@
 'use client';
-import { FormEvent, useState } from 'react';
+import React, {FormEvent, useState} from 'react';
 import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 
-export default function LoginForm() {
+export default function Page() : React.ReactNode {
   const router = useRouter();
 
   const [loginData, setLoginData] = useState({
@@ -17,7 +17,6 @@ export default function LoginForm() {
     const res = await signIn('credentials', {
       email: loginData.identifier,
       password: loginData.password,
-      redirect: false,
     });
     console.log(res);
   };

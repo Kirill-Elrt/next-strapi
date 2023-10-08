@@ -2,9 +2,10 @@ import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import React from 'react';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/app/api/auth/[...nextauth]';
+import {getServerSession, Session} from 'next-auth';
+import { authOptions } from '@/app/api/auth/[...nextauth]/options';
 import Provider from '@/app/context/clientProvider';
+import NavBar from "@/components/main/NavBar";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -18,14 +19,15 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const session = await getServerSession(authOptions);
 
   return (
     <html lang="ru">
       <body
         className={`${inter.className} bg-primary min-h-screen min-w-screen`}
       >
-        <Provider session={session}>{children}</Provider>
+      <div className={"flex justify-center"}>
+        <Provider >{children}<NavBar/></Provider>
+      </div>
       </body>
     </html>
   );

@@ -1,9 +1,8 @@
-import NextAuth from 'next-auth';
-import type { AuthOptions } from 'next-auth';
+import {NextAuthOptions} from 'next-auth';
 import CredentialsProvider from 'next-auth/providers/credentials';
 import axios from 'axios';
 
-export const authOptions: AuthOptions = {
+export const authOptions: NextAuthOptions = {
   providers: [
     CredentialsProvider({
       name: 'Credentials',
@@ -13,7 +12,7 @@ export const authOptions: AuthOptions = {
       },
       async authorize(credentials, req) {
         if (typeof credentials !== 'undefined') {
-          const res = await axios.post('http://localhost:1337/api/auth/local', {
+          const res = await axios.post('http://elertk133.fvds.ru:1337/api/auth/local', {
             identifier: credentials.email,
             password: credentials.password,
           });
@@ -29,11 +28,7 @@ export const authOptions: AuthOptions = {
     }),
   ],
   session: { strategy: 'jwt', maxAge: 3600 * 24 },
-  pages: {
-    signIn: '/login',
-  },
+  // pages: {
+  //   signIn: '/login',
+  // },
 };
-
-const handler = NextAuth(authOptions);
-
-export { handler as GET, handler as POST };
