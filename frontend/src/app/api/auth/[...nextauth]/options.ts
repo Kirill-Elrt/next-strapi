@@ -12,7 +12,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         if (typeof credentials !== 'undefined') {
-          const res = await axios.post('http://elertk133.fvds.ru:1337/api/auth/local', {
+          const res = await axios.post(`${process.env.NEXT_API_URL}/api/auth/local`, {
             identifier: credentials.email,
             password: credentials.password,
           });

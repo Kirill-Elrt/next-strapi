@@ -1,6 +1,5 @@
 'use client';
 import React, {FormEvent, useState} from 'react';
-import axios from 'axios';
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 
@@ -14,7 +13,7 @@ export default function Page() : React.ReactNode {
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    const res = await signIn('credentials', {
+    const res = await signIn('Credentials', {
       email: loginData.identifier,
       password: loginData.password,
     });
