@@ -10,8 +10,11 @@ interface Patient {
     name: string;
     lastName: string;
     patronymic: string;
+    gender: string
     date_birth: string;
-    phoneNumber: string;
+    phoneNumber: string | null;
+    address: string | null;
+    snils: string;
   };
 }
 
@@ -35,24 +38,33 @@ export default function PatientTable() {
 
   const patientsList = data?.data.map((item) => (
     <tr key={item.id}>
-      <td>{item.attributes.name}</td>
-      <td>{item.attributes.lastName}</td>
-      <td>{item.attributes.patronymic}</td>
-      <td>{item.attributes.date_birth}</td>
-      <td>{item.attributes.phoneNumber}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.name}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.lastName}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.patronymic}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.gender}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.date_birth}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.phoneNumber}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.address}</td>
+      <td className={"p-2 border border-slate-300"}>{item.attributes.snils}</td>
+      <td ><button className={"p-2 border rounded-lg "}>
+          Окно пациента
+      </button></td>
     </tr>
   ));
-  console.log(patientsList);
+  console.log(data);
   return (
     <div className="m-5 p-1">
-      <table className="table-auto">
+      <table className="table-fixed w-auto">
         <thead>
         <tr>
-          <th className="px-4 py-2">Name</th>
-          <th className="px-4 py-2">Last Name</th>
-          <th className="px-4 py-2">Patronymic</th>
-          <th className="px-4 py-2">Date of Birth</th>
-          <th className="px-4 py-2">Phone Number</th>
+          <th className="px-4 py-2 border border-slate-300 ">Имя</th>
+          <th className="px-4 py-2 border border-slate-300">Фамилия</th>
+          <th className="px-4 py-2 border border-slate-300">Отчество</th>
+          <th className="px-4 py-2 border border-slate-300">Пол</th>
+          <th className="px-4 py-2 border border-slate-300">Дата рождения</th>
+          <th className="px-4 py-2 border border-slate-300">Номер телефона</th>
+          <th className="px-4 py-2 border border-slate-300">Адрес</th>
+          <th className="px-4 py-2 border border-slate-300">Снилс</th>
         </tr>
         </thead>
         <tbody>{patientsList}</tbody>
