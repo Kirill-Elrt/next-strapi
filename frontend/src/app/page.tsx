@@ -8,7 +8,7 @@ export default function HomePage() {
   console.log(session);
 
 
-    return <div className={"border-4 w-screen h-screen bg-teal-50"}> {status == "loading"?
+    return <div className={"border-4 w-screen h-screen bg-amber-400"}> {status == "loading"?
         (<div>Loading...</div>) :
         (<div className={"grid grid-cols-2"}>
           <div>
