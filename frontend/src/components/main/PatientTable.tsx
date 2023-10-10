@@ -24,8 +24,8 @@ export default function PatientTable() {
     }
     const decoded = jwtDecode(session?.accessToken);
     console.log("decoded jwt: " + JSON.stringify(decoded));
-
-  }, [session]);
+    console.log(data);
+  }, []);
 
   const patientsList = data?.data.map((item) => (
     <li key={item.id} className="m-4">
