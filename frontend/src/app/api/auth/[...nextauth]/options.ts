@@ -17,6 +17,7 @@ export const authOptions: NextAuthOptions = {
             password: credentials.password,
           });
           if (typeof res !== 'undefined') {
+            axios.defaults.headers.common["Authorization"] = "Bearer " + res.data.jwt;
             return { ...res.data.user, apiToken: res.data.jwt };
           } else {
             return null;
@@ -28,6 +29,20 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
   session: { strategy: 'jwt', maxAge: 3600 * 24 },
+  callbacks: {
+    async jwt({token, account,user}) {
+      if (account) {
+        token.accessToken = user.apiToken;
+        token.user = user;
+      }
+      return token
+    },
+    async session({session, token}){
+        session.accessToken = token.accessToken;
+        session.user = token.user;
+      return session
+    }
+  },
   // pages: {
   //   signIn: '/login',
   // },

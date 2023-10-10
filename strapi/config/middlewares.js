@@ -6,7 +6,7 @@ module.exports = [
   'strapi::logger',
   'strapi::query',
   'strapi::body',
-  'strapi::session',
+  'strapi::session.ts',
   'strapi::favicon',
   'strapi::public',
 ];
