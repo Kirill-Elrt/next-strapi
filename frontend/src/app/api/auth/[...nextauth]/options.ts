@@ -17,7 +17,7 @@ export const authOptions: NextAuthOptions = {
             password: credentials.password,
           });
           if (typeof res !== 'undefined') {
-            axios.defaults.headers.common["Authorization"] = "Bearer " + res.data.jwt;
+            axios.defaults.headers.common["Authorization"] = "Bearer " + res.data.jwt; //Не работает
             return { ...res.data.user, apiToken: res.data.jwt };
           } else {
             return null;
