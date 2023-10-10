@@ -2,7 +2,6 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useSession} from "next-auth/react";
-import jwtDecode from 'jwt-decode';
 
 interface Patient {
   id: number;
@@ -24,15 +23,11 @@ export default function PatientTable() {
   const [data, setData] = useState<Patient[] | null>(null);
 
   useEffect(() => {
-    if(session?.accessToken) {
       axios.get<Patient[]>("http://elertk133.fvds.ru:1337/api/patients", {
-        headers: {Authorization: "Bearer " + session.accessToken},
+        headers: {Authorization: "Bearer " + session?.accessToken},
       })
         .then(res => setData(res.data))
         .catch(err => {console.error(err);});
-    }
-    const decoded = jwtDecode(session?.accessToken);
-    console.log("decoded jwt: " + JSON.stringify(decoded));
     console.log(data);
   }, []);
 
@@ -46,15 +41,15 @@ export default function PatientTable() {
       <td className={"p-2 border border-slate-300"}>{item.attributes.phoneNumber}</td>
       <td className={"p-2 border border-slate-300"}>{item.attributes.address}</td>
       <td className={"p-2 border border-slate-300"}>{item.attributes.snils}</td>
-      <td ><button className={"p-2 border rounded-lg "}>
+      <td ><button className={"p-2 border rounded-lg"} style={{width: "auto"}}>
           Окно пациента
       </button></td>
     </tr>
   ));
   console.log(data);
   return (
-    <div className="m-5 p-1">
-      <table className="table-fixed w-auto">
+    <div className="m-5 p-1 w-auto">
+      <table className="table w-auto">
         <thead>
         <tr>
           <th className="px-4 py-2 border border-slate-300 ">Имя</th>
@@ -72,3 +67,5 @@ export default function PatientTable() {
     </div>
   )
 }
+
+
