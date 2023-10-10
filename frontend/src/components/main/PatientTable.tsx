@@ -6,7 +6,13 @@ import jwtDecode from 'jwt-decode';
 
 interface Patient {
   id: number;
-  attributes: Record<string, any>;
+  attributes: {
+    name: string;
+    lastName: string;
+    patronymic: string;
+    date_birth: string;
+    phoneNumber: string;
+  };
 }
 
 export default function PatientTable() {
@@ -28,14 +34,29 @@ export default function PatientTable() {
   }, []);
 
   const patientsList = data?.data.map((item) => (
-    <li key={item.id} className="m-4">
-      {JSON.stringify(item.attributes)}
-    </li>
+    <tr key={item.id}>
+      <td>{item.attributes.name}</td>
+      <td>{item.attributes.lastName}</td>
+      <td>{item.attributes.patronymic}</td>
+      <td>{item.attributes.date_birth}</td>
+      <td>{item.attributes.phoneNumber}</td>
+    </tr>
   ));
 
   return (
     <div className="m-5 p-1">
-      <ul className={'text-red-500'}>{patientsList}</ul>
+      <table className="table-auto">
+        <thead>
+        <tr>
+          <th className="px-4 py-2">Name</th>
+          <th className="px-4 py-2">Last Name</th>
+          <th className="px-4 py-2">Patronymic</th>
+          <th className="px-4 py-2">Date of Birth</th>
+          <th className="px-4 py-2">Phone Number</th>
+        </tr>
+        </thead>
+        <tbody>{patientsList}</tbody>
+      </table>
     </div>
   )
 }
