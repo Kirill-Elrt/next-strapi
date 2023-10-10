@@ -27,7 +27,7 @@ export default function PatientTable() {
 
   }, [session]);
 
-  const patientsList = data?.map((item) => (
+  const patientsList = data?.data.map((item) => (
     <li key={item.id} className="m-4">
       {JSON.stringify(item.attributes)}
     </li>
@@ -35,7 +35,7 @@ export default function PatientTable() {
 
   return (
     <div className="m-5 p-1">
-      <ul>{patientsList}</ul>
+      <ul className={'text-red-500'}>{patientsList}</ul>
     </div>
   )
 }
