@@ -33,7 +33,7 @@ export default function PatientTable() {
     console.log(data);
   }, []);
 
-  const patientsList = data?.map((item) => (
+  const patientsList = data?.data.map((item) => (
     <tr key={item.id}>
       <td>{item.attributes.name}</td>
       <td>{item.attributes.lastName}</td>
