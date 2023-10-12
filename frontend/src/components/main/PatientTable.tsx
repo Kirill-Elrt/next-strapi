@@ -2,8 +2,13 @@
 import axios from "axios";
 import {useEffect, useState} from "react";
 import {useSession} from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 interface Patient {
+  data: IPatientData[] | null;
+}
+
+interface IPatientData {
   id: number;
   attributes: {
     name: string;
@@ -19,19 +24,19 @@ interface Patient {
 
 export default function PatientTable() {
   const {data: session} = useSession();
-
-  const [data, setData] = useState<Patient[] | null>(null);
+  const router = useRouter();
+  const [data, setData] = useState<Patient | null>(null);
 
   useEffect(() => {
-      axios.get<Patient[]>("http://elertk133.fvds.ru:1337/api/patients", {
+      axios.get("http://elertk133.fvds.ru:1337/api/patients", {
         headers: {Authorization: "Bearer " + session?.accessToken},
       })
-        .then(res => setData(res.data))
+        .then(res => setData(res.data.data))
         .catch(err => {console.error(err);});
     console.log(data);
   }, []);
 
-  const patientsList = data?.data.map((item) => (
+  const patientsList = data?.data?.map((item) => (
     <tr key={item.id}>
       <td className={"p-2 border border-slate-300"}>{item.attributes.name}</td>
       <td className={"p-2 border border-slate-300"}>{item.attributes.lastName}</td>
@@ -41,7 +46,7 @@ export default function PatientTable() {
       <td className={"p-2 border border-slate-300"}>{item.attributes.phoneNumber}</td>
       <td className={"p-2 border border-slate-300"}>{item.attributes.address}</td>
       <td className={"p-2 border border-slate-300"}>{item.attributes.snils}</td>
-      <td ><button className={"p-2 border rounded-lg"} style={{width: "auto"}}>
+      <td ><button className={"p-2 border rounded-lg"}>
           Окно пациента
       </button></td>
     </tr>

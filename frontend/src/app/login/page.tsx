@@ -1,12 +1,17 @@
 'use client';
-import React, {FormEvent, useState} from 'react';
+import React, { ChangeEvent, FormEvent, useState } from "react";
 import { useRouter } from 'next/navigation';
 import { signIn } from 'next-auth/react';
 
-export default function Page() : React.ReactNode {
+interface ILoginData {
+  identifier: string;
+  password: string;
+}
+
+export default function Page(): React.JSX.Element {
   const router = useRouter();
 
-  const [loginData, setLoginData] = useState({
+  const [loginData, setLoginData] = useState<ILoginData>({
     identifier: '',
     password: '',
   });
@@ -20,6 +25,11 @@ export default function Page() : React.ReactNode {
     console.log(res);
   };
 
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const {name, value} = e.target;
+    setLoginData({...loginData, [name]: value});
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center">
       <div className="bg-white p-8 rounded shadow-md w-[550px]">
@@ -31,12 +41,7 @@ export default function Page() : React.ReactNode {
               placeholder="логин"
               className="w-full p-2 border rounded"
               value={loginData.identifier}
-              onChange={(e) =>
-                setLoginData({
-                  ...loginData,
-                  identifier: e.target.value,
-                })
-              }
+              onChange={handleInputChange}
             />
           </div>
           <div className="mb-4">
@@ -45,12 +50,7 @@ export default function Page() : React.ReactNode {
               placeholder="пароль"
               className="w-full p-2 border rounded"
               value={loginData.password}
-              onChange={(e) =>
-                setLoginData({
-                  ...loginData,
-                  password: e.target.value,
-                })
-              }
+              onChange={handleInputChange}
             />
           </div>
           <button
@@ -64,5 +64,3 @@ export default function Page() : React.ReactNode {
     </div>
   );
 }
-
-// TODO: minimize this file
