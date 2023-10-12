@@ -25,7 +25,7 @@ interface IPatientData {
 export default function PatientTable() {
   const {data: session} = useSession();
   const router = useRouter();
-  const [data, setData] = useState<Patient | null>(null);
+  const [data, setData] = useState<IPatientData[] | null>(null);
 
   useEffect(() => {
       axios.get("http://elertk133.fvds.ru:1337/api/patients", {
@@ -36,7 +36,7 @@ export default function PatientTable() {
     console.log(data);
   }, []);
 
-  const patientsList = data?.data?.map((item) => (
+  const patientsList = data?.map((item) => (
     <tr key={item.id}>
       <td className={"p-2 border border-slate-300"}>{item.attributes.name}</td>
       <td className={"p-2 border border-slate-300"}>{item.attributes.lastName}</td>
