@@ -1,0 +1,26 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cabinets",
+  "info": {
+    "singularName": "cabinet",
+    "pluralName": "cabinets",
+    "displayName": "Cabinet",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "med_organization": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::med-organization.med-organization"
+    }
+  }
+}

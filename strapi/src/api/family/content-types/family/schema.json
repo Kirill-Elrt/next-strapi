@@ -1,0 +1,35 @@
+{
+  "kind": "collectionType",
+  "collectionName": "families",
+  "info": {
+    "singularName": "family",
+    "pluralName": "families",
+    "displayName": "Family "
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "patronymic": {
+      "type": "string"
+    },
+    "phoneNumber": {
+      "type": "string",
+      "required": true
+    },
+    "patient": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient.patient"
+    }
+  }
+}

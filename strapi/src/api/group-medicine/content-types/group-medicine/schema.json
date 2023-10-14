@@ -1,0 +1,23 @@
+{
+  "kind": "collectionType",
+  "collectionName": "group_medicines",
+  "info": {
+    "singularName": "group-medicine",
+    "pluralName": "group-medicines",
+    "displayName": "GroupMedicine"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "biginteger",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

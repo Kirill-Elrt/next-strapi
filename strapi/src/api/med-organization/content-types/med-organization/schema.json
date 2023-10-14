@@ -1,0 +1,19 @@
+{
+  "kind": "collectionType",
+  "collectionName": "med_organizations",
+  "info": {
+    "singularName": "med-organization",
+    "pluralName": "med-organizations",
+    "displayName": "MedOrganization"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patient_hospitalizations",
+  "info": {
+    "singularName": "patient-hospitalization",
+    "pluralName": "patient-hospitalizations",
+    "displayName": "PatientHospitalization"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "patient": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient.patient"
+    },
+    "date_start": {
+      "type": "date",
+      "required": true
+    },
+    "date_end": {
+      "type": "date"
+    }
+  }
+}

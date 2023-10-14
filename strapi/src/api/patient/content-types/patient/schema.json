@@ -1,0 +1,75 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patients",
+  "info": {
+    "singularName": "patient",
+    "pluralName": "patients",
+    "displayName": "Patient",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "patronymic": {
+      "type": "string"
+    },
+    "cabinet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cabinet.cabinet"
+    },
+    "date_birth": {
+      "type": "date"
+    },
+    "phoneNumber": {
+      "type": "text",
+      "required": true
+    },
+    "snils": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text"
+    },
+    "age": {
+      "type": "integer",
+      "required": true
+    },
+    "height": {
+      "type": "decimal",
+      "required": true
+    },
+    "disabilityLevel": {
+      "type": "enumeration",
+      "enum": [
+        "нет",
+        "первая",
+        "вторая",
+        "третья"
+      ]
+    },
+    "dateSetupInRegistr": {
+      "type": "date",
+      "required": true
+    },
+    "gender": {
+      "type": "enumeration",
+      "enum": [
+        "man",
+        "woman"
+      ],
+      "default": "man",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "operative_treatments",
+  "info": {
+    "singularName": "operative-treatment",
+    "pluralName": "operative-treatments",
+    "displayName": "OperativeTreatment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "isWaitingTC": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "isWaitingIKD": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "isWaitingCRT": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "isWaitingTAVI": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "isWaitingKKP": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "isWaitingRM": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "dateTC": {
+      "type": "date"
+    },
+    "dateIKD": {
+      "type": "date"
+    },
+    "dateCRT": {
+      "type": "date"
+    },
+    "dateTAVI": {
+      "type": "date"
+    },
+    "dateKK": {
+      "type": "date"
+    },
+    "dateRM": {
+      "type": "date"
+    }
+  }
+}

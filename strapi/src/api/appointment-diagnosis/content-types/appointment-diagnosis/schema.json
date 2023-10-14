@@ -1,0 +1,32 @@
+{
+  "kind": "collectionType",
+  "collectionName": "appointment_diagnoses",
+  "info": {
+    "singularName": "appointment-diagnosis",
+    "pluralName": "appointment-diagnoses",
+    "displayName": "Appointment_diagnosis"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "patient_appointment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient-appointment.patient-appointment"
+    },
+    "diagnosis": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::diagnosis.diagnosis"
+    },
+    "date_start": {
+      "type": "date",
+      "required": true
+    },
+    "date_end": {
+      "type": "date"
+    }
+  }
+}

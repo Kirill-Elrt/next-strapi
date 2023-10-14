@@ -1,0 +1,33 @@
+{
+  "name": "strapi",
+  "private": true,
+  "version": "0.1.0",
+  "description": "A Strapi application",
+  "scripts": {
+    "develop": "strapi develop",
+    "start": "strapi start",
+    "build": "strapi build",
+    "strapi": "strapi"
+  },
+  "dependencies": {
+    "@strapi/plugin-documentation": "^4.14.3",
+    "@strapi/plugin-graphql": "^4.14.4",
+    "@strapi/plugin-i18n": "4.14.0",
+    "@strapi/plugin-users-permissions": "4.14.0",
+    "@strapi/strapi": "4.14.0",
+    "pg": "8.8.0",
+    "strapi-plugin-netlify-deployments": "^2.0.1",
+    "strapi-plugin-vercel-deploy": "^1.4.0"
+  },
+  "author": {
+    "name": "A Strapi developer"
+  },
+  "strapi": {
+    "uuid": "181695d8-c974-4d79-b5c1-94f8c96c8773"
+  },
+  "engines": {
+    "node": ">=16.0.0 <=20.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}

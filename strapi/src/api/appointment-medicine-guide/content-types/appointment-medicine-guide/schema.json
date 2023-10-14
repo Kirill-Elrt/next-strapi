@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "appointment_medicine_guides",
+  "info": {
+    "singularName": "appointment-medicine-guide",
+    "pluralName": "appointment-medicine-guides",
+    "displayName": "Appointment_medicineGuide",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "patient_appointment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient-appointment.patient-appointment"
+    },
+    "medicine_guide": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::medicine-guide.medicine-guide"
+    },
+    "date_start": {
+      "type": "date",
+      "required": true
+    },
+    "date_end": {
+      "type": "date",
+      "required": true
+    }
+  }
+}

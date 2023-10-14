@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "patient_appointments",
+  "info": {
+    "singularName": "patient-appointment",
+    "pluralName": "patient-appointments",
+    "displayName": "PatientAppointment",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "cabinet": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::cabinet.cabinet"
+    },
+    "patient": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient.patient"
+    },
+    "doctor": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::doctor.doctor"
+    },
+    "weight": {
+      "type": "float",
+      "required": true
+    },
+    "IMT": {
+      "type": "decimal",
+      "required": true
+    },
+    "dateNextAppointment": {
+      "type": "date"
+    }
+  }
+}

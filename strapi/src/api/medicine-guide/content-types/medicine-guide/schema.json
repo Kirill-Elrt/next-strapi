@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "medicine_guides",
+  "info": {
+    "singularName": "medicine-guide",
+    "pluralName": "medicine-guides",
+    "displayName": "MedicineGuide",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "code": {
+      "type": "biginteger",
+      "required": true
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "isSet": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    },
+    "group_medicine": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::group-medicine.group-medicine"
+    }
+  }
+}
