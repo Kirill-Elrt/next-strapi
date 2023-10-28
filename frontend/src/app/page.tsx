@@ -12,14 +12,11 @@ export default function HomePage() {
         (<div className={`spinner-container active`}>
           <Spinner />
         </div>) :
-        (<div className={"flex flex-col h-[100%]"}>
+        (<div className={"flex flex-col"}>
           <div>
-            <button className={"m-2 p-2 w-60 border rounded-lg bg-teal-300 hover:bg-teal-400"}>Новый приём</button>
             <button className={"m-2 p-2 w-60 border rounded-lg bg-teal-300 hover:bg-teal-400"}>Новый пациент</button>
           </div>
-          <div className={'mt-10 flex justify-center w-[85vw]'}>
-            <PatientTable/>
-          </div>
+          <PatientTable/>
         </div>)}
     </div>;
 }

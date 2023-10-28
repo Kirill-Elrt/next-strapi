@@ -1,12 +1,6 @@
 
-import axios from "axios";
-import {useEffect, useState} from "react";
-import {useSession} from "next-auth/react";
-import { useRouter } from "next/navigation";
-
-interface Patient {
-  data: IPatientData[] | null;
-}
+import Link from "next/link";
+import PatternTable from "@/components/main/PatternTable";
 
 interface IPatientData {
   id: number;
@@ -22,55 +16,135 @@ interface IPatientData {
   };
 }
 
+
 export default function PatientTable() {
-  const {data: session} = useSession();
-  const router = useRouter();
-  const [data, setData] = useState<IPatientData[] | null>(null);
+    const selectedColumns= [
+        'name',
+        'lastName',
+        'patronymic'
+    ];
+  const columns = [
+      {
+          title: 'Имя',
+          dataIndex: 'attributes',
+          key: 'name',
+          sorter: (a, b) => a.attributes.name.localeCompare(b.attributes.name),
+          render: (attributes) => `${attributes.name}`,
+          width: 200,
+      },
+      {
+          title: 'Фамилия',
+          dataIndex: 'attributes',
+          key: 'lastName',
+          sorter: (a, b) => a.attributes.lastName.localeCompare(b.attributes.lastName),
+          render: (attributes) => `${attributes.lastName}`,
+          width: 200,
+      },
+      {
+          title: 'Отчество',
+          dataIndex: 'attributes',
+          key: 'patronymic',
+          sorter: (a, b) => a.attributes.patronymic.localeCompare(b.attributes.patronymic),
+          render: (attributes) => `${attributes.patronymic}`,
+          width: 200,
+      },
+      {
+          title: 'Пол',
+          dataIndex: 'attributes',
+          key: 'gender',
+          sorter: (a, b) => a.attributes.gender.localeCompare(b.attributes.gender),
+          render: (attributes) => `${attributes.gender}`,
+          filters: [
+              { text: 'Мужской', value: 'male' },
+              { text: 'Женский', value: 'female' },
+          ],
+          onFilter: (value: string, record) => record.name.indexOf(value) === 0,
+          width: 100,
+      },
+      {
+          title: 'Телефон',
+          dataIndex: 'attributes',
+          key: 'phoneNumber',
+          sorter: (a, b) => a.attributes.phoneNumber.localeCompare(b.attributes.phoneNumber),
+          render: (attributes) => `${attributes.phoneNumber}`,
+          width: 120,
+      },
+      {
+          title: 'Адрес',
+          dataIndex: 'attributes',
+          key: 'address',
+          sorter: (a, b) => a.attributes.address.localeCompare(b.attributes.address),
+          render: (attributes) => `${attributes.address}`,
+          width: 400,
+      },
+      {
+          title: 'Дата рождения',
+          dataIndex: 'attributes',
+          key: 'date_birth',
+          sorter: (a, b) => a.attributes.date_birth.localeCompare(b.attributes.date_birth),
+          render: (attributes) => `${attributes.date_birth}`,
+          width: 100,
+      },
+      {
+          title: 'Снилс',
+          dataIndex: 'attributes',
+          key: 'snils',
+          sorter: (a, b) => a.attributes.snils.localeCompare(b.attributes.snils),
+          render: (attributes) => `${attributes.snils}`,
+          width: 130,
+      },
+      {
+          title: '',
+          dataIndex: 'id',
+          key: 'action',
+          render: (id) => <Link href={`/`+ id}>Карточка</Link>,
+          width: 100,
+          fixed: 'right',
+      },
 
-  useEffect(() => {
-      axios.get("http://elertk133.fvds.ru:1337/api/patients", {
-        headers: {Authorization: "Bearer " + session?.accessToken},
-      })
-        .then(res => setData(res.data.data))
-        .catch(err => {console.error(err);});
-    console.log(data);
-  }, []);
+  ]
 
-  const patientsList = data?.map((item) => (
-    <tr key={item.id}>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.name}</td>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.lastName}</td>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.patronymic}</td>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.gender}</td>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.date_birth}</td>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.phoneNumber}</td>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.address}</td>
-      <td className={"p-2 border border-slate-300"}>{item.attributes.snils}</td>
-      <td ><button className={"p-2 border rounded-lg"}>
-          Окно пациента
-      </button></td>
-    </tr>
-  ));
-  console.log(data);
-  return (
-    <div className="m-5 p-1 w-auto">
-      <table className="table w-auto">
-        <thead>
-        <tr>
-          <th className="px-4 py-2 border border-slate-300 ">Имя</th>
-          <th className="px-4 py-2 border border-slate-300">Фамилия</th>
-          <th className="px-4 py-2 border border-slate-300">Отчество</th>
-          <th className="px-4 py-2 border border-slate-300">Пол</th>
-          <th className="px-4 py-2 border border-slate-300">Дата рождения</th>
-          <th className="px-4 py-2 border border-slate-300">Номер телефона</th>
-          <th className="px-4 py-2 border border-slate-300">Адрес</th>
-          <th className="px-4 py-2 border border-slate-300">Снилс</th>
-        </tr>
-        </thead>
-        <tbody>{patientsList}</tbody>
-      </table>
-    </div>
-  )
+    const availableColumns = [
+
+        {
+            title: 'Имя',
+            value: 'name',
+            disabled: true,
+        },
+        {
+            title: 'Фамилия',
+            value: 'lastName',
+            disabled: true,
+        },
+        {
+            title: 'Отчество',
+            value: 'patronymic',
+            disabled: true,
+        },
+        {
+            title: 'Пол',
+            value: 'gender',
+        },
+        {
+            title: 'Телефон',
+            value: 'phoneNumber',
+        },
+        {
+            title: 'Адрес',
+            value: 'address',
+        },
+        {
+            title: 'Дата рождения',
+            value: 'date_birth',
+        },
+        {
+            title: 'Снилс',
+            value: 'snils',
+        },
+
+    ]
+
+    return PatternTable<IPatientData>(columns, availableColumns, `http://elertk133.fvds.ru:1337/api/patients/`, selectedColumns)
 }
 
 

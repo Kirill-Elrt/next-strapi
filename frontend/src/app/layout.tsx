@@ -21,7 +21,7 @@ export default async function RootLayout({
   return (
     <html lang="ru">
       <body
-        className={`${inter.className} min-h-screen min-w-screen`}
+        className={`${inter.className} `}
       >
       <div className={"flex justify-center"}>
         <Provider>{children}<NavBar/></Provider>
