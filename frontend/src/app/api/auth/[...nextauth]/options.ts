@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
       },
       async authorize(credentials, req) {
         if (typeof credentials !== 'undefined') {
-          const res = await axios.post(`${process.env.NEXT_API_URL}/api/auth/local`, {
+          const res = await axios.post(`http://185.246.66.238:1337/api/auth/local`, {
             identifier: credentials.email,
             password: credentials.password,
           });
