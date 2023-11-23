@@ -11,7 +11,15 @@ interface TableParams {
     sortOrder?: string;
     filters?: Record<string, FilterValue>;
 }
-export default function PatternTable<T>(columns: [], availableColumns: [], url: String, selectedColumnsParam: [] = []) {
+
+interface PatternTableProps {
+    columns: [],
+    availableColumns: [],
+    url: String,
+    selectedColumnsParam: [],
+}
+export default function PatternTable<T>({columns, availableColumns, url, selectedColumnsParam = []} : PatternTableProps) {
+
     const {data: session} = useSession();
     const [tableParams, setTableParams] = useState<TableParams>({
         pagination: {

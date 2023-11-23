@@ -4,6 +4,7 @@ import PatternTable from "@/components/main/PatternTable";
 
 interface IPatientData {
   id: number;
+  //Вынести параметры из attributes на уровень выше чтобы не писать каждый раз render: (attributes) => `${attributes.параметр}`
   attributes: {
     name: string;
     lastName: string;
@@ -144,7 +145,7 @@ export default function PatientTable() {
 
     ]
 
-    return PatternTable<IPatientData>(columns, availableColumns, `http://elertk133.fvds.ru:1337/api/patients/`, selectedColumns)
+    return <PatternTable<IPatientData> columns={columns} availableColumns={availableColumns} url={`http://elertk133.fvds.ru:1337/api/patients/`} selectedColumnsParam={selectedColumns}/>
 }
 
 
