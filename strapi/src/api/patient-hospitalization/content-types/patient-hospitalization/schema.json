@@ -4,7 +4,8 @@
   "info": {
     "singularName": "patient-hospitalization",
     "pluralName": "patient-hospitalizations",
-    "displayName": "PatientHospitalization"
+    "displayName": "PatientHospitalization",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -22,6 +23,9 @@
     },
     "date_end": {
       "type": "date"
+    },
+    "diagnosis": {
+      "type": "text"
     }
   }
 }

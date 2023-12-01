@@ -37,6 +37,9 @@
     },
     "dateNextAppointment": {
       "type": "date"
+    },
+    "comment": {
+      "type": "text"
     }
   }
 }

@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "benefit_catalogs",
+  "info": {
+    "singularName": "benefit-catalog",
+    "pluralName": "benefit-catalogs",
+    "displayName": "BenefitCatalog"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

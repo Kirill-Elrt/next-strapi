@@ -1,0 +1,78 @@
+{
+  "kind": "collectionType",
+  "collectionName": "blood_biochemistries",
+  "info": {
+    "singularName": "blood-biochemistry",
+    "pluralName": "blood-biochemistries",
+    "displayName": "BloodBiochemistry"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "patient_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient.patient"
+    },
+    "patient_appointment_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient-appointment.patient-appointment"
+    },
+    "patient_hospitalization_id": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::patient-hospitalization.patient-hospitalization"
+    },
+    "total_protein": {
+      "type": "float",
+      "required": true
+    },
+    "lpvp_hc": {
+      "type": "float",
+      "required": true
+    },
+    "lpnp_hc": {
+      "type": "float",
+      "required": true
+    },
+    "uric_acid": {
+      "type": "float",
+      "required": true
+    },
+    "potassium": {
+      "type": "float",
+      "required": true
+    },
+    "bilirubin": {
+      "type": "float",
+      "required": true
+    },
+    "total_hc": {
+      "type": "float",
+      "required": true
+    },
+    "ast": {
+      "type": "float",
+      "required": true
+    },
+    "urea": {
+      "type": "float",
+      "required": true
+    },
+    "sodium": {
+      "type": "float",
+      "required": true
+    },
+    "alt": {
+      "type": "float",
+      "required": true
+    },
+    "creatinine": {
+      "type": "float",
+      "required": true
+    }
+  }
+}
